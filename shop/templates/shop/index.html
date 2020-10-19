@@ -6,7 +6,7 @@
         margin-left: 10px;
       }
       .col-md-3 img{
-        width: 255px;
+        width: 250px;
         height: 300px;
       }
       body .carousel-indicators li{
@@ -41,7 +41,7 @@
 <div class="container">
    {% for product, range, number_slides in allproducts %}
    <!--slide show start here-->
-  <h1>Men Fashion</h1>
+  <h3 class="my-4">Flash Sale On {{product.0.category}} - Recommended items</h3>
   <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
     <ul class="carousel-indicators">
         <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
