@@ -6,8 +6,8 @@
         margin-left: 10px;
       }
       .col-md-3 img{
-        width: 255;
-        height: 355;
+        width: 255px;
+        height: 300px;
       }
       body .carousel-indicators li{
         background-color: blue;
@@ -39,7 +39,7 @@
   <ul class="carousel-indicators">
     <li data-target="#demo" data-slide-to="0" class="active"></li>
     {% for i in range %}
-    <li data-target="#demo" data-slide-to={{i}}></li>
+    <li data-target="#demo" data-slide-to="{{i}}"></li>
     {% endfor %}
   </ul>
 
@@ -73,14 +73,14 @@
         </div>
 
         {% if forloop.counter|divisibleby:2 and forloop.counter > 0 and not forloop.last %}
-          </div><div class="carousel-item"
+          </div><div class="carousel-item">
         {% endif %}
 
         {% endfor %}
     </div>
 
 
-
+</div>
 </div>
 <!--    left and right control for the slide-->
     <a class="carousel-control-prev" href="#demo" data-slide="prev">
