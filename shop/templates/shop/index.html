@@ -16,6 +16,11 @@
       body .carousel-control-next-icon{
         background-color: blue;
       }
+      .carousel-control-prev,
+      .carousel-control-next{
+        top: auto;
+        bottom: auto;
+      }
       body .no-padding{
         padding-left: 0;
         padding-right: 0;
@@ -34,18 +39,18 @@
 {% block body %}
 {% load static %}
 <div class="container">
+   {% for product, range, number_slides in allproducts %}
+   <!--slide show start here-->
   <h1>Men Fashion</h1>
-  <div id="demo" class="carousel slide my-3" data-ride="carousel">
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    {% for i in range %}
-    <li data-target="#demo" data-slide-to="{{i}}"></li>
-    {% endfor %}
-  </ul>
+  <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+        {% for i in range %}
+        <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+        {% endfor %}
+    </ul>
 
-<!--    slide show start here-->
     <div class="container carousel-inner no-padding">
-
 
       <div class="carousel-item active">
         <div class="col-xs-3 col-sm-3 col-md-3">
@@ -73,22 +78,21 @@
         </div>
 
         {% if forloop.counter|divisibleby:2 and forloop.counter > 0 and not forloop.last %}
-          </div><div class="carousel-item">
+      </div>
+      <div class="carousel-item">
         {% endif %}
 
         {% endfor %}
+      </div>
     </div>
-
-
+  </div>
+  <!--left and right control for the slide-->
+  <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+  {% endfor %}
 </div>
-</div>
-<!--    left and right control for the slide-->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
 {% endblock %}
-
-</div>
