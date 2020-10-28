@@ -98,6 +98,7 @@
     }
     else{
         cart = JSON.parse(localStorage.getItem('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
     }
 
     $('.cart').click(function(){
@@ -108,8 +109,12 @@
         }
         else {
             cart[idstr] = 1;
+            document.getElementById('cart').innerHTML = Object.keys(cart).length;
         }
         localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
     });
+    $('#popcart').popover();
+    document.getElementById('popcart').setAttribute('data-content', '<h5>Added items in Shopping Cart</h5>');
 </script>
 {% endblock %}

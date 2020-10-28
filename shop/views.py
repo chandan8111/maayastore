@@ -26,7 +26,7 @@ def about(request):
 def contact(request):
     return HttpResponse("We Are at Contact")
 
-def traker(request):
+def tracker(request):
     return HttpResponse("We Are at Traker")
 
 def search(request):
