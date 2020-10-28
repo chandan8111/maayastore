@@ -23,8 +23,10 @@ def index(request):
 def tracker(request):
     return render(request, 'shop/tracker.html')
 
-def productview(request):
-    return render(request, 'shop/productview.html')
+def productview(request, pid):
+    # fetch the product using the id
+    product = Product.objects.filter(id=pid)
+    return render(request, 'shop/productview.html', {'product': product[0]})
 
 def checkout(request):
     return render(request, 'shop/checkout.html')
