@@ -20,20 +20,20 @@ def index(request):
     params = {'allproducts': allproducts}
     return render(request, 'shop/index.html', params)
 
+def tracker(request):
+    return render(request, 'shop/tracker.html')
+
+def productview(request):
+    return render(request, 'shop/productview.html')
+
+def checkout(request):
+    return render(request, 'shop/checkout.html')
+
+def contact(request):
+    return render(request, 'shop/contact.html')
+
 def about(request):
     return render(request, 'shop/about.html')
 
-def contact(request):
-    return HttpResponse("We Are at Contact")
-
-def tracker(request):
-    return HttpResponse("We Are at Traker")
-
 def search(request):
     return HttpResponse("We Are at Search")
-
-def productview(request):
-    return HttpResponse("We Are at Product View")
-
-def checkout(request):
-    return HttpResponse("We Are at Checkout")
