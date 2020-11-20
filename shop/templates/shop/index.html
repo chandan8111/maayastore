@@ -62,7 +62,7 @@
           <div class="card align-items-center" style="width: 18rem;">
             <img src='/media/{{i.product_image}}' class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">{{i.product_name}}</h5>
+              <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
               <p class="card-text">{{i.product_desc|slice:"0:30"}}...</p>
               <span id="divpr{{i.id}}" class="divpr">
                 <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
@@ -116,7 +116,21 @@
 
     // Add popover to cart
     $('#popcart').popover();
-      document.getElementById('popcart').setAttribute('data-content', '<h5>Added items in Shopping Cart</h5>');
+    updatePopover(cart);
+    function updatePopover(cart){
+      console.log("popover");
+      var popStr = "";
+      popStr = popStr + "<h5>Added items in Shopping Cart</h5><div class='mx-2 my-2'>";
+      var i = 1;
+      for (var item in cart){
+        popStr = popStr + "<b>" + i + "</b>. ";
+        popStr = popStr + document.getElementById('name'+ item).innerHTML.slice(0, 30) + "...  Qty: " + cart[item] +'<br>';
+        i = i + 1;
+      }
+      popStr = popStr + "</div>";
+      document.getElementById('popcart').setAttribute('data-content', popStr);
+      $('#popcart').popover('show');
+    }
 
     function updateCart(cart){
       for (var item in cart){
@@ -124,6 +138,7 @@
         localStorage.setItem('cart', JSON.stringify(cart));
         document.getElementById('cart').innerHTML = Object.keys(cart).length;
         console.log(cart);
+        updatePopover(cart);
       }
     }
     // minus , plus button clicked action
