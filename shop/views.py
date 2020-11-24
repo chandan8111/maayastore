@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product, Contact
+from .models import Product, Contact, Orders
 from math import ceil
 # Create your views here.
 def index(request):
@@ -29,6 +29,22 @@ def productview(request, pid):
     return render(request, 'shop/productview.html', {'product': product[0]})
 
 def checkout(request):
+    if request.method == "POST":
+        items_json = request.POST.get('items_json', '')
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        # how to save data in one colum When given by multi colum
+        address = request.POST.get('address', '') + " " + request.POST.get('address2', '')
+        city = request.POST.get('city', '')
+        state = request.POST.get('state', '')
+        zip_code = request.POST.get('zip_code', '')
+        phone_no = request.POST.get('phone_no', '')
+        order = Orders(items_json=items_json, name=name, email=email, address=address, city=city,
+                       state=state, zip_code=zip_code, phone_no=phone_no)
+        order.save()
+        thank = True
+        id = order.order_id
+        return render(request, 'shop/checkout.html', {'thank': thank, 'id': id})
     return render(request, 'shop/checkout.html')
 
 def contact(request):
@@ -39,6 +55,8 @@ def contact(request):
         desc = request.POST.get('desc', '')
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
+        submit = True
+        return render(request, 'shop/contact.html', {'submit': submit})
     return render(request, 'shop/contact.html')
 
 def about(request):

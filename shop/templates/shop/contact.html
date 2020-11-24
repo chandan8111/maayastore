@@ -29,3 +29,11 @@
   </div>
 </div>
 {% endblock %}
+{% block js %}
+<script>
+  {% if submit %}
+    alert('Thanks for your review. I look your sugession ana quries.');
+    document.location = "/shop";
+  {% endif %}
+</script>
+{% endblock %}
