@@ -40,5 +40,15 @@ class Orders(models.Model):
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=10)
-    phone_no = models.IntegerField(max_length=15, default="")
+    phone_no = models.CharField(max_length=15, default="")
 
+
+# Ordered product tracking modules
+class OrderUpdate(models.Model):
+    update_id = models.AutoField(primary_key=True)
+    order_id = models.IntegerField(default="")
+    update_desc = models.TextField(max_length=5000)
+    timestamp = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.update_desc[0:50] + "..."
