@@ -27,13 +27,19 @@
                 Enter your correct order id and Email and click to submit button to find your order status !
             </ul>
         </div>
+
+        <h2>Your Order Details</h2>
+        <div class="mt-4">
+            <ul class="list-group" id="citems">
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
 
 {% block js %}
 <script>
-    $('#trackerForm').submit(function(event) {
+    $('#trackerForm').submit(function (event) {
         $('#items').empty();
         var formData = {
             'orderId': $('input[name=orderId]').val(),
@@ -48,9 +54,10 @@
             encode: true
         })
             .done(function (data) {
-                const updates = JSON.parse(data);
+                data = JSON.parse(data);
+                updates = data[0];
                 let sendData;
-                if (updates.length > 0 & updates != {}) {
+                if (updates.length > 0 & updates !== {}) {
                     for (let i = 0; i < updates.length; i++) {
                         let text = updates[i]['text'];
                         let time = updates[i]['time'];
@@ -65,6 +72,18 @@
                              Your order id and Email has been not correct. Please enter correct email id and email.
                                 </li>`
                     $('#items').append(sendData);
+                }
+                // fill in the order details
+                cart = JSON.parse(data[1]);
+                console.log(cart);
+                for (item in cart) {
+                    let name = cart[item][1];
+                    let qty = cart[item][0];
+                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${name}
+                        <span class="badge badge-primary badge-pill">${qty}</span>
+                    </li>`
+                    $('#citems').append(mystr);
                 }
             });
         event.preventDefault();
