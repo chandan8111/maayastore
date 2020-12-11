@@ -11,9 +11,12 @@
     width: 250px;
     height: 300px;
   }
+  .card-img-top {
+    margin-top: 20px;
+  }
 
   body .carousel-indicators li {
-    background-color: blue;
+    background-color: #7270fc;
   }
 
   body .carousel-control-prev-icon,
@@ -31,10 +34,6 @@
   body .no-padding {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  body .carousel-indicators {
-    bottom: 0;
   }
 
   body .carousel-indicators .active {
@@ -55,7 +54,7 @@
   <h3 class="my-4">Flash Sale On {{product.0.category}} - Recommended items</h3>
   <div class="row">
     <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
-      <ul class="carousel-indicators">
+      <ul class="carousel-indicators" style="bottom: -35px">
         <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
         {% for i in range %}
         <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
