@@ -9,6 +9,11 @@
             <ul class="list-group" id="items">
 
             </ul>
+            <nav aria-label="breadcrumb mt-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Total Price: <b><span id="totalPrice"></span></b></li>
+                </ol>
+            </nav>
         </div>
     </div>
     <div class="col my-5">
@@ -81,6 +86,7 @@
     }
     console.log(cart);
     var sum = 0;
+    var totalPrice = 0;
     if ($.isEmptyObject(cart)) {
         mystr = `<h4 class="text-danger">Your cart is empty, Please add some items to your cart before Checking Out!</h4>`
         $('#items').append(mystr);
@@ -88,15 +94,18 @@
         for (item in cart) {
             let name = cart[item][1];
             let qty = cart[item][0];
+            let itemPrice = cart[item][2];
             sum = sum + qty;
+            totalPrice = totalPrice + qty* itemPrice
             mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
                     ${name}
-                    <span class="badge badge-primary badge-pill">${qty}</span>
+                    <span class="badge badge-primary badge-pill">Total Quantity: ${qty}</span>
                 </li>`
             $('#items').append(mystr);
         }
     }
     document.getElementById('cart').innerHTML = sum;
+    document.getElementById('totalPrice').innerHTML = totalPrice;
 
     // post data into items_json
     $('#items_json').val(JSON.stringify(cart));
