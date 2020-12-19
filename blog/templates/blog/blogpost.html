@@ -2,7 +2,6 @@
 {% block title %} BlogPost | MaayaBlog {% endblock %}
 {% block css %}
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0" nonce="IGc2WcI4"></script>
-
 {% endblock %}
 {% block body %}
 <div class="container">
@@ -11,7 +10,7 @@
             <h3 class="pb-4 mb-4 font-italic border-bottom">
                 {{post.title}}
             </h3>
-            <div class="fb-like" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}"
+            <div class="fb-like mb-3" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}"
                  data-layout="standard" data-action="like"
                  data-size="large" data-share="true">
             </div>
@@ -31,11 +30,17 @@
         </div>
 
         <div class="col-md-4">
-
             <div class="p-4 mb-3 bg-light rounded">
                 <h4 class="font-italic">About</h4>
                 <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus
                     sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <div class="fb-share-button my-3" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-layout="button_count"
+                 data-size="large">
+                    <a target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fblog%2Fblogpost%2F3&amp;src=sdkpreparse"
+                    class="fb-xfbml-parse-ignore">Share
+                    </a>
+                </div>
             </div>
 
             <div class="p-4">
