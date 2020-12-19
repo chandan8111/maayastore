@@ -11,7 +11,10 @@
             <h3 class="pb-4 mb-4 font-italic border-bottom">
                 {{post.title}}
             </h3>
-
+            <div class="fb-like" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}"
+                 data-layout="standard" data-action="like"
+                 data-size="large" data-share="true">
+            </div>
             <article class="blog-post">
                 <h2 class="blog-post-title">{{post.heading0}}</h2>
                 <p class="blog-post-meta">{{post.publish_date}}</p>
@@ -21,12 +24,14 @@
                 <h3>{{post.sub_heading}}</h3>
                 <p>{{post.Con_sub_heading}}</p>
             </article>
-            <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-numposts="2">
+            <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}"
+                 data-width="100%" data-numposts="2">
             </div>
 
         </div>
 
         <div class="col-md-4">
+
             <div class="p-4 mb-3 bg-light rounded">
                 <h4 class="font-italic">About</h4>
                 <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus
