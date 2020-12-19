@@ -1,9 +1,8 @@
 {% extends 'blog/basic.html' %}
 {% block title %} BlogPost | MaayaBlog {% endblock %}
 {% block css %}
-<style>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0" nonce="IGc2WcI4"></script>
 
-</style>
 {% endblock %}
 {% block body %}
 <div class="container">
@@ -22,6 +21,8 @@
                 <h3>{{post.sub_heading}}</h3>
                 <p>{{post.Con_sub_heading}}</p>
             </article>
+            <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-numposts="2">
+            </div>
 
         </div>
 
