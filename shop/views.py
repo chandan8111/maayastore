@@ -55,7 +55,7 @@ def checkout(request):
         items_json = request.POST.get('items_json', '')
         name = request.POST.get('name', '')
         email = request.POST.get('email', '')
-        # how to save data in one colum When given by multi colum
+        # how to save data in one column When given by multi column
         address = request.POST.get('address', '') + "  &  " + request.POST.get('address2', '')
         city = request.POST.get('city', '')
         state = request.POST.get('state', '')

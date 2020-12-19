@@ -10,17 +10,17 @@
     <div class="row mt-4 mb-4">
         <div class="col-md-8">
             <h3 class="pb-4 mb-4 font-italic border-bottom">
-                Tittle
+                {{post.title}}
             </h3>
 
             <article class="blog-post">
-                <h2 class="blog-post-title">Heading 0</h2>
-                <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-                <p>Heading 0 content</p>
-                <h2>Heading 1</h2>
-                <p>Heading 1 content</p>
-                <h3>Sub-heading</h3>
-                <p>Sub-heading content</p>
+                <h2 class="blog-post-title">{{post.heading0}}</h2>
+                <p class="blog-post-meta">{{post.publish_date}}</p>
+                <p>{{post.Con_heading0}}</p>
+                <h2>{{post.heading1}}</h2>
+                <p>{{post.Con_heading1}}</p>
+                <h3>{{post.sub_heading}}</h3>
+                <p>{{post.Con_sub_heading}}</p>
             </article>
 
         </div>
