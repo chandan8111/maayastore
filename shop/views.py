@@ -106,7 +106,7 @@ def handle_request(request):
         if response_dict['RESPCODE'] == '01':
             print("order successful")
         else:
-            print("Order has been failed" + response_dict['RESPMSG'] )
+            print("Order has been failed" + response_dict['RESPMSG'])
     return render(request, 'shop/paymentstatus.html', {'response': response_dict})
 
 
@@ -128,4 +128,30 @@ def about(request):
 
 
 def search(request):
-    return HttpResponse("We Are at Search")
+    query = request.GET.get('search')
+    query = query.lower()
+    allproducts = []
+    catprods = Product.objects.values('category', 'id')
+    cats = {item['category'] for item in catprods}
+    for cat in cats:
+        prodtemp = Product.objects.filter(category=cat)
+        prod = [item for item in prodtemp if searchMatch(query, item)]
+        n = len(prod)
+        number_slides = n // 3 + ceil((n / 3) - (n // 3))
+        if len(prod) != 0:
+            allproducts.append([prod, range(1, number_slides), number_slides])
+    params = {'allproducts': allproducts, 'msg': ""}
+    if len(allproducts) == 0:
+        params = {'msg': "Your searched item has been not found. Please enter relevant query"}
+    return render(request, 'shop/search.html', params)
+
+
+def searchMatch(querry, item):
+    # for improving search function we can use
+    # TfidfVectorizer sklearn
+    # universal sentence encoder
+    # sklearn cosine_similarity etc.
+    if querry in item.product_name.lower() or querry in item.product_desc.lower() or querry in item.category.lower():
+        return True
+    else:
+        return False
