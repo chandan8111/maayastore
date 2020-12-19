@@ -8,5 +8,6 @@ urlpatterns = [
     path('tracker/', views.tracker, name="Tracker"),
     path('search/', views.search, name="Search"),
     path('productview/<int:pid>', views.productview, name="ProductView"),
-    path('checkout/', views.checkout, name="Chekout")
+    path('checkout/', views.checkout, name="Chekout"),
+    path('handlerequest/', views.handle_request, name="HandleRequest")
 ]

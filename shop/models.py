@@ -34,6 +34,7 @@ class Orders(models.Model):
     order_id = models.AutoField(primary_key=True)
     order_date = models.DateTimeField(default=datetime.now(), blank=True)
     items_json = models.TextField(max_length=5000)
+    amount = models.IntegerField(default=0)
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     address = models.TextField(max_length=2000)
