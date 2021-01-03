@@ -65,8 +65,8 @@ change appache configrations | <pre><code> vim 000-default.conf</code></pre>
 <code>sudo service apache2 restart</code>
 
 # other thing the are safe from permission error in future
-<code>cd /var/www</code>
-<code>chmod 664 dir_name/db.sqlite3</code>
-<code>chown :www-data dir_name/db.sqlite3</code>
-<code>chown :www-data dir_name/</code>
-<code>sudo service apache2 reload</c
+<code>cd /var/www</code></br>
+<code>chmod 664 dir_name/db.sqlite3</code></br>
+<code>chown :www-data dir_name/db.sqlite3</code></br>
+<code>chown :www-data dir_name/</code></br>
+<code>sudo service apache2 reload</code></br>
