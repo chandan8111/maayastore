@@ -35,7 +35,7 @@ change dir | <pre><code>cd /etc/apache2/sites-availiable/</code></pre
 change appache configrations | <pre><code> vim 000-default.conf</code></pre>
 
 
-**changes in appache conf file**
+## changes in appache conf file
 
 <VirtualHost *:80></br>
 	ServerAdmin webmaster@localhost</br>
@@ -55,16 +55,16 @@ change appache configrations | <pre><code> vim 000-default.conf</code></pre>
 	CustomLog ${APACHE_LOG_DIR}/access.log combined</br></br>
 </VirtualHost></br>
 
-1. **disable site**
+## disable site
 <pre><code>sudo a2dissite 000-default.conf</code><pre>
 
-2. **enable site**
+## enable site
 <pre><code>sudo a2ensite 000-default.conf</code><pre>
 
-3. appache server restart
+## appache server restart
 <pre><code>sudo service apache2 restart</code><pre>
 
-**other thing the are safe from permission error in future**
+# other thing the are safe from permission error in future
 <pre><code>cd /var/www</code><pre>
 <pre><code>chmod 664 dir_name/db.sqlite3</code><pre>
 <pre><code>chown :www-data dir_name/db.sqlite3</code><pre>
