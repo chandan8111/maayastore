@@ -32,14 +32,44 @@ create superuser | <pre><code>python manage.py createsuperuser</code></pre
 collect static | <pre><code>python manage.py collectstatic</code></pre
 run django server | <pre><code>python manage.py runserver 0.0.0.0:8000</code></pre
 change dir | <pre><code>cd /etc/apache2/sites-availiable/</code></pre
+change appache configrations | <pre><code> vim 000-default.conf</code></pre>
 
 
+**changes in appache conf file**
 
+<VirtualHost *:80></br>
+	ServerAdmin webmaster@localhost</br>
+	  Alias /static /var/www/djangomac/static</br>
+    <Directory /var/www/djangomac/static></br>
+        Require all granted</br>
+    </Directory></br>
+	<Directory /var/www/djangomac/djangomacproj></br>
+        <Files wsgi.py></br>
+            Require all granted</br>
+        </Files></br>
+    </Directory></br>
+    WSGIDaemonProcess djangomac python-path=/var/www/djangomac python-home=/var/www/djangomac/djangomac</br>
+    WSGIProcessGroup djangomac</br>
+    WSGIScriptAlias / /var/www/djangomac/djangomacproj/wsgi.py</br>
+	ErrorLog ${APACHE_LOG_DIR}/error.log</br>
+	CustomLog ${APACHE_LOG_DIR}/access.log combined</br></br>
+</VirtualHost></br>
 
+1. **disable site**
+<pre><code>sudo a2dissite 000-default.conf</code><pre>
 
+2. **enable site**
+<pre><code>sudo a2ensite 000-default.conf</code><pre>
 
+3. appache server restart
+<pre><code>sudo service apache2 restart</code><pre>
 
-
+**other thing the are safe from permission error in future**
+<pre><code>cd /var/www</code><pre>
+<pre><code>chmod 664 dir_name/db.sqlite3</code><pre>
+<pre><code>chown :www-data dir_name/db.sqlite3</code><pre>
+<pre><code>chown :www-data dir_name/</code><pre>
+<pre><code>sudo service apache2 reload</code><pre>
 
 
 _You **can** combine them_
